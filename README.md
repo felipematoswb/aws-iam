@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# aws-iam
-=======
 # AWS IAM
 
 ## - Introdução
@@ -365,4 +362,3 @@ Minhas redes sociais
 [Twitter](https://twitter.com/felipematoswb)
 
 [LinkedIn](https://www.linkedin.com/in/felipematoswb/)
->>>>>>> cc650b3... changes
