@@ -114,12 +114,12 @@ Como mencionado, IAM Policy é em formato JSON, para construir um JSON, nós pre
 
 ```json
 "Condition": {
-    "NotIpAddress": {
-        "aws:SourceIp": [
-        "192.0.2.0/24",
-        "203.0.113.0/24"
-        ]
-    }
+    "NotIpAddress": {
+        "aws:SourceIp": [
+        "192.0.2.0/24",
+        "203.0.113.0/24"
+        ]
+    }
 }
 ```
 
@@ -127,16 +127,16 @@ Combinando todas as partes de uma IAM Policy a estrutura será parecida com esta
 
 ```json
 {
-    "Statement":[{
-        "Effect":"effect",
-        "Action":"action",
-        "Resource":"arn",
-        "Condition":{
-            "condition":{
-            "key":"value"
-            }
-        }
-    } ]
+    "Statement":[{
+        "Effect":"effect",
+        "Action":"action",
+        "Resource":"arn",
+        "Condition":{
+            "condition":{
+            "key":"value"
+            }
+        }
+    }]
 }
 ```
 
@@ -144,22 +144,22 @@ Um real exemplo, nesta politica, o trafego para um S3 Bucket de um IP especifico
 
 ```json
 {
-    "Id": "Policy1604259866496",
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "Stmt1604259864802",
-            "Action": "s3:*",
-            "Effect": "Deny",
-            "Resource": "arn:aws:s3:::myexamplebucket/*",
-            "Condition": {
-                "NotIpAddress": {
-                    "aws:SourceIp": "192.168.1.10/24"
-                }
-            },
-            "Principal": "*"
-        }
-    ]
+    "Id": "Policy1604259866496",
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Stmt1604259864802",
+            "Action": "s3:*",
+            "Effect": "Deny",
+            "Resource": "arn:aws:s3:::myexamplebucket/*",
+            "Condition": {
+                "NotIpAddress": {
+                    "aws:SourceIp": "192.168.1.10/24"
+                }
+            },
+            "Principal": "*"
+        }
+    ]
 }
 ```
 
@@ -203,10 +203,6 @@ arn:aws:iam::123456789012:user/Prod/test1234/*
 4. Se existe alguma politica com SCP (Service Control Policy) ou Permissions Boundaries
 5. Se existir alguma rejeição, o acesso é negado.
 
-![Fluxo IAM Policy](image.png)
-
-Criando um IAM Policy usando o AWS Cli
-
 Iremos criar um IAM Policy que faça as seguintes permissoões:
 
 1. Start e Stop de uma instancia especifica
@@ -214,27 +210,27 @@ Iremos criar um IAM Policy que faça as seguintes permissoões:
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "ec2:StartInstances",
-                "ec2:StopInstances"
-            ],
-            "Resource": "arn:aws:ec2:us-west-2:XXXXXX:instance/i-02ba5c9e4250bf322"
-        },
-        {
-            "Sid": "VisualEditor1",
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeInstances",
-                "ec2:DeleteKeyPair"
-            ],
-            "Resource": "*"
-        }
-    ]
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:StartInstances",
+                "ec2:StopInstances"
+            ],
+            "Resource": "arn:aws:ec2:us-west-2:XXXXXX:instance/i-02ba5c9e4250bf322"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeInstances",
+                "ec2:DeleteKeyPair"
+            ],
+            "Resource": "*"
+        }
+    ]
 }
 ```
 
